@@ -14,6 +14,6 @@ sudo apt-get install git
 git config --global core.editor “vim”
 sudo ln -fs bash  /usr/bin/sh
 
-
-git clone https://github.com/chxuan/vimplus.git ~/.vimplus
+mkdir ~/.vimplus
+git clone https://github.com/xiaoken2openwrt/vimplus.git ~/.vimplus
 ~/.vimplus/install.sh
