@@ -3,6 +3,7 @@ sudo ehco "start install base tools..."
 sudo apt-get install ssh
 sudo apt-get install vim
 sudo apt-get install gcc
+sudo apt-get install make
 sudo apt-get install clang
 sudo apt-get install p7zip-full
 sudo apt-get install lzop
@@ -17,3 +18,6 @@ sudo ln -fs bash  /usr/bin/sh
 mkdir ~/.vimplus
 git clone https://github.com/xiaoken2openwrt/vimplus.git ~/.vimplus
 ~/.vimplus/install.sh
+
+#manual install by augus
+cp ./downloads/DoxygenToolkit.vim    ~/.vim/plugged/
