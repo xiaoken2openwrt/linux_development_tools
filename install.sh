@@ -9,6 +9,8 @@ sudo apt-get install p7zip-full
 sudo apt-get install lzop
 sudo apt-get install lib32z1
 #sudo apt-get install lib32ncurses5(ubuntu20应该是libncurses6)
+sudo apt-get install clang-format-10
+sudo ln -s /usr/bin/clang-format-10 /usr/bin/clang-format
 sudo apt-get install ctags
 sudo apt-get install cscope
 sudo apt-get install ripgrep
