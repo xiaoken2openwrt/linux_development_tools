@@ -13,6 +13,7 @@ sudo apt-get install clang-format-10
 sudo ln -s /usr/bin/clang-format-10 /usr/bin/clang-format
 sudo apt-get install ctags
 sudo apt-get install cscope
+sudo apt-get install doxygen
 sudo apt-get install ripgrep
 sudo apt-get install global
 sudo apt-get install git
