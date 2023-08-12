@@ -4,6 +4,7 @@ sudo apt-get install ssh
 sudo apt-get install vim
 sudo apt-get install gcc
 sudo apt-get install make
+sudo apt-get install mtd-utils
 sudo apt-get install clang
 sudo apt-get install p7zip-full
 sudo apt-get install lzop
