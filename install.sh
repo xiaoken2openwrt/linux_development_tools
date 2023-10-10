@@ -18,6 +18,8 @@ sudo apt-get install cscope
 sudo apt-get install doxygen
 sudo apt-get install ripgrep
 sudo apt-get install global
+sudo apt-get install flex
+sudo apt-get install bison
 sudo apt-get install git
 git config --global core.editor “vim”
 sudo ln -fs bash  /usr/bin/sh
