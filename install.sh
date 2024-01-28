@@ -2,6 +2,7 @@
 sudo ehco "start install base tools..."
 sudo apt-get install ssh
 sudo apt-get install vim
+sudo apt-get install dos2unix
 sudo apt-get install gcc
 sudo apt-get install make
 sudo apt-get install mtd-utils
