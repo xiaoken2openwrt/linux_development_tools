@@ -24,6 +24,7 @@ sudo apt-get install global
 sudo apt-get install flex
 sudo apt-get install bison
 sudo apt-get install git
+sudo apt-get install manpages-posix manpages-posix-dev
 git config --global core.editor “vim”
 sudo ln -fs bash  /usr/bin/sh
 
