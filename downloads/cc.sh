@@ -1,4 +1,8 @@
 #!/bin/sh
+if [ ! -f .ctagsignore ]; then
+	echo "please specical a .ctagsignore file"
+	exit
+fi
 
 ignoreitem=`cat .ctagsignore `
 echo ${ignoreitem}
@@ -27,7 +31,14 @@ echo ${ignorefile}
 #find . \( ${ignorepath} \) -prune -o -type f -name *.c -print  >cscope.files
 find . \( ${ignorepath} \) -prune -o -type f \( -name "*.cpp" -o -name "*.cc" -o -name "*.c" -o -name "*.h" \) -print  >cscope.files
 
-#exclude file
+#exclude file for ctags
+cp .ctagsignore   ctags.files
+find . \( ${ignorepath} \) -prune -o -type f ! \( -name "*.cpp" -o -name "*.cc" -o -name "*.c" -o -name "*.h" \) -print  >>ctags.files
+find . \( ${ignorepath} \) -prune -o -type l -print  >>ctags.files
+#strip "./" prefix,because ctags can not recgornize "./" prefix
+sed -i 's|^\.\/\(\)|\1|' ctags.files
+
+#include file for cscope
 for p in ${ignorefile}
 do
 	grep -v "${p}"  cscope.files >cscope.temp
@@ -35,5 +46,6 @@ do
 done
 
 #cscope -Rbkq;ctags -R --exclude=@.ctagsignore  *
-cscope -bkq -i cscope.files;ctags -R --exclude=@.ctagsignore  *
+#cscope -bkq -i cscope.files;ctags -R --exclude=@.ctagsignore  *
+cscope -bkq -i cscope.files;ctags -R --exclude=@ctags.files  *
 
