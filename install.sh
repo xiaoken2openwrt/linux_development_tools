@@ -11,6 +11,7 @@ sudo apt-get install u-boot-tools
 sudo apt-get install clang
 sudo apt-get install p7zip-full
 sudo apt-get install lzop
+sudo apt install libarchive-zip-perl #include crc32 tools
 sudo apt-get install lib32z1
 #sudo apt-get install lib32ncurses5(ubuntu20应该是libncurses6)
 sudo apt-get install libncursesw5
