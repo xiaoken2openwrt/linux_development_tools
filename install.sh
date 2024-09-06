@@ -1,5 +1,7 @@
 #!/bin/sh
 sudo ehco "start install base tools..."
+sudo apt-get install python2.7-dev       #(ubuntu22.04 or higher version  default no python2,so must manual install it)
+sudo apt-get install pkg-config
 sudo apt-get install ssh
 sudo apt-get install vim
 sudo apt-get install dos2unix
@@ -11,11 +13,12 @@ sudo apt-get install u-boot-tools
 sudo apt-get install clang
 sudo apt-get install p7zip-full
 sudo apt-get install lzop
+sudo apt-get install libreadline-dev #
 sudo apt install libarchive-zip-perl #include crc32 tools
 sudo apt-get install lib32z1
 #sudo apt-get install lib32ncurses5(ubuntu20应该是libncurses6)
 sudo apt-get install libncursesw5
-sudo apt-get install clang-format-10
+sudo apt-get install clang-format-10 #(ubuntu22.04 or higher version must compile install it)
 sudo ln -s /usr/bin/clang-format-10 /usr/bin/clang-format
 sudo apt-get install ctags
 sudo apt-get install cscope
