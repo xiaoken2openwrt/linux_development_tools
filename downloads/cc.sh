@@ -48,4 +48,5 @@ done
 #cscope -Rbkq;ctags -R --exclude=@.ctagsignore  *
 #cscope -bkq -i cscope.files;ctags -R --exclude=@.ctagsignore  *
 cscope -bkq -i cscope.files;ctags -R --exclude=@ctags.files  *
+cscope -bkqu -i cscope.files;ctags -R --exclude=@ctags.files  *
 
