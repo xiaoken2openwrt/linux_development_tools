@@ -34,7 +34,9 @@ sudo ln -fs bash  /usr/bin/sh
 
 mkdir ~/.vimplus
 git clone https://github.com/xiaoken2openwrt/vimplus.git ~/.vimplus
-~/.vimplus/install.sh
+pushd ~/.vimplus/
+./install.sh
+popd
 
 #manual install by augus
 cp ./downloads/DoxygenToolkit.vim    ~/.vim/plugged/
