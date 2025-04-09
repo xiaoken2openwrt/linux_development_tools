@@ -40,3 +40,5 @@ popd
 
 #manual install by augus
 cp ./downloads/DoxygenToolkit.vim    ~/.vim/plugged/
+mkdir  ~/.vim/syntax
+cp ./downloads/c.vim    ~/.vim/syntax
