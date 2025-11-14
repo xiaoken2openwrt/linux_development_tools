@@ -4,6 +4,7 @@ sudo apt-get install python2.7-dev       #(ubuntu22.04 or higher version  defaul
 sudo apt-get install pkg-config
 sudo apt-get install ssh
 sudo apt-get install vim
+sudo apt-get install curl
 sudo apt-get install dos2unix
 sudo apt-get install gcc
 sudo apt-get install make
