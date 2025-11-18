@@ -34,7 +34,8 @@ git config --global core.editor “vim”
 sudo ln -fs bash  /usr/bin/sh
 
 mkdir ~/.vimplus
-git clone https://github.com/xiaoken2openwrt/vimplus.git ~/.vimplus
+#git clone https://github.com/xiaoken2openwrt/vimplus.git ~/.vimplus
+git clone git@github.com:xiaoken2openwrt/vimplus.git ~/.vimplus
 pushd ~/.vimplus/
 ./install.sh
 popd
