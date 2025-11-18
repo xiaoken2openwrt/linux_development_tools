@@ -43,3 +43,11 @@ popd
 cp ./downloads/DoxygenToolkit.vim    ~/.vim/plugged/
 mkdir  ~/.vim/syntax
 cp ./downloads/c.vim    ~/.vim/syntax
+
+# manual install repo
+mkdir -p ~/.bin
+curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o ~/.bin/repo
+chmod u+x ~/.bin/repo
+echo export REPO_URL='https://mirrors.bfsu.edu.cn/git/git-repo' >> ~/.bashrc
+echo export PATH="${HOME}/.bin:${PATH}"  >> ~/.bashrc
+#source ~/.bashrc 脚本里不生效的
