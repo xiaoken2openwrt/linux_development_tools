@@ -8,6 +8,7 @@ sudo apt-get install curl
 sudo apt-get install dos2unix
 sudo apt-get install gcc
 sudo apt-get install make
+sudo apt-get install bear
 sudo apt-get install uuid-dev
 sudo apt-get install mtd-utils
 sudo apt-get install u-boot-tools
@@ -19,6 +20,8 @@ sudo apt install libarchive-zip-perl #include crc32 tools
 sudo apt-get install lib32z1
 #sudo apt-get install lib32ncurses5(ubuntu20应该是libncurses6)
 sudo apt-get install libncursesw5
+sudo apt-get install libssl-dev
+sudo apt-get install fakeroot
 sudo apt-get install clang-format-10 #(ubuntu22.04 or higher version must compile install it)
 sudo ln -s /usr/bin/clang-format-10 /usr/bin/clang-format
 sudo apt-get install ctags
