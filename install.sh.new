@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+# Install base development tools for embedded / Linux kernel work.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOWNLOADS="${SCRIPT_DIR}/downloads"
+
+echo ">>> Installing base packages..."
+
+# Batch install: one apt transaction is much faster than many.
+# -y / DEBIAN_FRONTEND=noninteractive avoids interactive prompts.
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get update -qq
+sudo apt-get install -y --no-install-recommends \
+  pkg-config \
+  openssh-client \
+  vim \
+  curl \
+  dos2unix \
+  gcc \
+  make \
+  bear \
+  uuid-dev \
+  mtd-utils \
+  u-boot-tools \
+  clang \
+  p7zip-full \
+  unzip \
+  lzop \
+  cpio \
+  libreadline-dev \
+  libarchive-zip-perl \
+  lib32z1 \
+  libncursesw5 \
+  libssl-dev \
+  fakeroot \
+  exuberant-ctags \
+  cscope \
+  doxygen \
+  ripgrep \
+  global \
+  flex \
+  bison \
+  git \
+  git-lfs \
+  manpages-posix \
+  manpages-posix-dev
+# libarchive-zip-perl: include crc32 tools
+# sudo apt-get install lib32ncurses5 (ubuntu20应该是libncurses6)
+
+# Optional / version-sensitive packages (fail soft on newer Ubuntu).
+install_optional() {
+  local pkg="$1"
+  if apt-cache show "$pkg" &>/dev/null; then
+    sudo apt-get install -y --no-install-recommends "$pkg" || true
+  else
+    echo ">>> Skip (not available): $pkg"
+  fi
+}
+
+# ubuntu22.04 or higher version default no python2, so must manual install it
+install_optional python2.7-dev
+# ubuntu22.04 or higher version must compile install it
+install_optional clang-format-10
+
+if [[ -x /usr/bin/clang-format-10 ]]; then
+  sudo ln -sfn /usr/bin/clang-format-10 /usr/bin/clang-format
+elif command -v clang-format >/dev/null 2>&1; then
+  echo ">>> clang-format already available: $(command -v clang-format)"
+else
+  echo ">>> Warning: clang-format not found; install manually if needed"
+fi
+
+git config --global core.editor "vim"
+sudo ln -fs bash /usr/bin/sh
+
+echo ">>> Installing vimplus..."
+# git clone https://github.com/xiaoken2openwrt/vimplus.git ~/.vimplus
+if [[ ! -d "${HOME}/.vimplus/.git" ]]; then
+  git clone git@github.com:xiaoken2openwrt/vimplus.git "${HOME}/.vimplus"
+else
+  echo ">>> ~/.vimplus already cloned, skipping"
+fi
+(
+  cd "${HOME}/.vimplus"
+  ./install.sh
+)
+
+# manual install by augus
+echo ">>> Copying Vim extras..."
+mkdir -p "${HOME}/.vim/plugged" "${HOME}/.vim/syntax"
+cp -f "${DOWNLOADS}/DoxygenToolkit.vim" "${HOME}/.vim/plugged/"
+cp -f "${DOWNLOADS}/c.vim" "${HOME}/.vim/syntax/"
+
+# manual install repo
+echo ">>> Installing Google repo (Tsinghua / BFSU mirrors)..."
+mkdir -p "${HOME}/.bin"
+curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o "${HOME}/.bin/repo"
+chmod u+x "${HOME}/.bin/repo"
+
+append_once() {
+  local line="$1"
+  local file="$2"
+  grep -qxF "$line" "$file" 2>/dev/null || echo "$line" >>"$file"
+}
+
+append_once "export REPO_URL='https://mirrors.bfsu.edu.cn/git/git-repo'" "${HOME}/.bashrc"
+append_once 'export PATH="${HOME}/.bin:${PATH}"' "${HOME}/.bashrc"
+
+# source ~/.bashrc 脚本里执行不生效的
+echo ">>> Done. Run: source ~/.bashrc"

@@ -16,6 +16,7 @@ sudo apt-get install clang
 sudo apt-get install p7zip-full
 sudo apt-get install unzip -y
 sudo apt-get install lzop
+sudo apt-get install cpio -y
 sudo apt-get install libreadline-dev #
 sudo apt install libarchive-zip-perl #include crc32 tools
 sudo apt-get install lib32z1
