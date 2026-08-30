@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo ehco "start install base tools..."
 sudo apt-get install python2.7-dev       #(ubuntu22.04 or higher version  default no python2,so must manual install it)
-sudo apt-get install python3-dev python3.12-dev  #(ubuntu24.04 default python3,so must manual install develop version)
+sudo apt-get install python3-dev python3.12-dev python3-pip  #(ubuntu24.04 default python3,so must manual install develop version)
 sudo apt-get install pkg-config
 sudo apt-get install ssh
 sudo apt-get install vim
@@ -9,6 +9,7 @@ sudo apt-get install curl
 sudo apt-get install dos2unix
 sudo apt-get install gcc
 sudo apt-get install make
+sudo apt-get install ninja-build -y
 sudo apt-get install bear
 sudo apt-get install uuid-dev
 sudo apt-get install mtd-utils
